@@ -31,7 +31,74 @@
       TASK 7.8: Display pass/fail status
       TASK 7.9: Filter grades by class
       ================================ -->
-      
+      <main class="content">
+        <h1>Grades</h1>
+        <div id="page-alert"></div>
+
+        <section class="panel">
+          <h2>Add / Edit Grade</h2>
+          <form id="grades-form" class="app-form" novalidate>
+            <input type="hidden" id="grade-id" />
+            <div class="grid-3">
+              <div class="form-group">
+                <label for="grade-student">Student</label>
+                <select id="grade-student" required></select>
+                <small class="error-text" data-error-for="grade-student"></small>
+              </div>
+              <div class="form-group">
+                <label for="grade-subject">Subject</label>
+                <select id="grade-subject" required></select>
+                <small class="error-text" data-error-for="grade-subject"></small>
+              </div>
+              <div class="form-group">
+                <label for="grade-value">Grade</label>
+                <input id="grade-value" type="number" min="0" max="100" required />
+                <small class="error-text" data-error-for="grade-value"></small>
+              </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Save Grade</button>
+            <button class="btn" type="button" id="grades-reset">Reset</button>
+          </form>
+        </section>
+
+        <section class="panel">
+          <h2>Grade List</h2>
+          <div class="table-toolbar">
+            <select id="grades-class-filter"></select>
+            <button class="btn" id="show-report" type="button">Show Student Report</button>
+          </div>
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Student</th>
+                  <th>Subject</th>
+                  <th>Grade</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="grades-table-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel" id="student-report-panel">
+          <h2>Student Report</h2>
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Student</th>
+                  <th>Average</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="report-table-body"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
     </div>
   </div>
 
