@@ -2,83 +2,173 @@
 EPIC 8: Dashboard & Reports
 TASK 8.1: Show total counters
 ================================ */
-/* ================================
-EPIC 1: UI & Layout
-TASK 1.4: Create reusable form styles
-================================ */
-.app-form {
+.stats-grid {
   display: grid;
-  gap: 12px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  margin-bottom: 32px;
 }
 
-.grid-2,
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.form-group label {
-  font-weight: 600;
-  font-size: 14px;
-  color: var(--text);
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-  padding: 10px 12px;
+.stat-card {
+  background: linear-gradient(135deg, var(--surface) 0%, #f8fafc 100%);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 20px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+}
+
+.stat-card:hover::before {
+  transform: scaleX(1);
+}
+
+.stat-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.stat-card h3 {
+  margin: 0 0 8px;
+  color: var(--muted);
   font-size: 14px;
-  transition: border-color 0.2s ease;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+.stat-card p {
+  margin: 0;
+  font-size: 32px;
+  color: var(--text);
+  font-weight: 800;
+  line-height: 1;
 }
 
-.error-text {
-  color: var(--danger);
+.stat-card-change {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  padding: 4px 8px;
+  border-radius: 6px;
   font-size: 12px;
-  margin-top: 4px;
-  display: none;
+  font-weight: 600;
 }
 
-.form-group.error input,
-.form-group.error select,
-.form-group.error textarea {
-  border-color: var(--danger);
+.stat-card-change.positive {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
 }
 
-.form-group.error .error-text {
-  display: block;
+.stat-card-change.negative {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
 }
 
-/* ================================
-EPIC 1: UI & Layout
-TASK 1.1: Create full responsive layout
-================================ */
-.grid-2 {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.grid-3 {
+.dashboard-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  gap: 24px;
+}
+
+.dashboard-grid .panel {
+  height: 100%;
+}
+
+.dashboard-grid .panel h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dashboard-grid .panel h2::before {
+  content: '';
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(180deg, var(--primary), var(--primary-light));
+  border-radius: 2px;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list li {
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.list li:hover {
+  background: white;
+  transform: translateX(4px);
+  box-shadow: var(--shadow-sm);
+}
+
+.list li:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 1200px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 768px) {
-  .grid-2,
-  .grid-3 {
+  .stats-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .stat-card {
+    padding: 20px;
+  }
+  
+  .stat-card p {
+    font-size: 28px;
   }
 }
