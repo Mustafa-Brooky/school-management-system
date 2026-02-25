@@ -202,4 +202,40 @@
   // EPIC 7: Grades System
   // TASK 7.4: Delete grade
   // ================================
-  
+  tableBody.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) return;
+
+    const id = target.dataset.id;
+    const action = target.dataset.action;
+    if (!id || !action) return;
+
+    const grades = getGrades();
+    const selected = grades.find((item) => item.id === id);
+    if (!selected) return;
+
+    if (action === "edit") {
+      idInput.value = selected.id;
+      studentSelect.value = selected.studentId;
+      subjectSelect.value = selected.subjectId;
+      gradeInput.value = selected.grade;
+      return;
+    }
+
+    if (action === "delete") {
+      saveGrades(grades.filter((item) => item.id !== id));
+      logActivity("Grade deleted.");
+      showAlert("page-alert", "Grade deleted.", "warning");
+      renderGrades();
+      renderReport();
+    }
+  });
+
+  classFilter.addEventListener("change", renderGrades);
+  document.getElementById("show-report").addEventListener("click", renderReport);
+  document.getElementById("grades-reset").addEventListener("click", resetForm);
+
+  renderSelects();
+  renderGrades();
+  renderReport();
+})();
