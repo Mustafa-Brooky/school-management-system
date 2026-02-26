@@ -27,7 +27,47 @@
       TASK 4.4: Delete teacher
       TASK 4.5: Assign subject to teacher
       ================================ -->
-      
+      <main class="content">
+        <h1>Teachers</h1>
+        <div id="page-alert"></div>
+
+        <section class="panel">
+          <h2>Add / Edit Teacher</h2>
+          <form id="teachers-form" class="app-form" novalidate>
+            <input type="hidden" id="teacher-id" />
+            <div class="grid-2">
+              <div class="form-group">
+                <label for="teacher-name">Name</label>
+                <input id="teacher-name" type="text" required />
+                <small class="error-text" data-error-for="teacher-name"></small>
+              </div>
+              <div class="form-group">
+                <label for="teacher-subjects">Assigned Subjects</label>
+                <select id="teacher-subjects" multiple></select>
+              </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Save Teacher</button>
+            <button class="btn" type="button" id="teachers-reset">Reset</button>
+          </form>
+        </section>
+
+        <section class="panel">
+          <h2>Teacher List</h2>
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Subjects</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="teachers-table-body"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
     </div>
   </div>
 

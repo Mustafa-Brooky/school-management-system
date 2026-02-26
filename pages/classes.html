@@ -28,7 +28,47 @@
       TASK 5.5: Assign students to class
       TASK 5.6: Count students per class
       ================================ -->
-      
+      <main class="content">
+        <h1>Classes</h1>
+        <div id="page-alert"></div>
+
+        <section class="panel">
+          <h2>Add / Edit Class</h2>
+          <form id="classes-form" class="app-form" novalidate>
+            <input type="hidden" id="class-id" />
+            <div class="grid-2">
+              <div class="form-group">
+                <label for="class-name">Class Name</label>
+                <input id="class-name" type="text" required />
+                <small class="error-text" data-error-for="class-name"></small>
+              </div>
+              <div class="form-group">
+                <label for="class-students">Assign Students</label>
+                <select id="class-students" multiple></select>
+              </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Save Class</button>
+            <button class="btn" type="button" id="classes-reset">Reset</button>
+          </form>
+        </section>
+
+        <section class="panel">
+          <h2>Class List</h2>
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Students Count</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="classes-table-body"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
     </div>
   </div>
 

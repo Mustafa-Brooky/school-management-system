@@ -28,7 +28,59 @@
       TASK 3.5: Search student
       TASK 3.6: Filter by class
       ================================ -->
-      
+      <main class="content">
+        <h1>Students</h1>
+        <div id="page-alert"></div>
+
+        <section class="panel">
+          <h2>Add / Edit Student</h2>
+          <form id="students-form" class="app-form" novalidate>
+            <input type="hidden" id="student-id" />
+            <div class="grid-3">
+              <div class="form-group">
+                <label for="student-name">Name</label>
+                <input id="student-name" type="text" required />
+                <small class="error-text" data-error-for="student-name"></small>
+              </div>
+              <div class="form-group">
+                <label for="student-age">Age</label>
+                <input id="student-age" type="number" min="5" max="25" required />
+                <small class="error-text" data-error-for="student-age"></small>
+              </div>
+              <div class="form-group">
+                <label for="student-class">Class</label>
+                <select id="student-class" required></select>
+                <small class="error-text" data-error-for="student-class"></small>
+              </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Save Student</button>
+            <button class="btn" type="button" id="students-reset">Reset</button>
+          </form>
+        </section>
+
+        <section class="panel">
+          <h2>Student List</h2>
+          <div class="table-toolbar">
+            <input id="student-search" type="search" placeholder="Search by name" />
+            <select id="student-class-filter"></select>
+          </div>
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Class</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="students-table-body"></tbody>
+            </table>
+          </div>
+          <div id="students-empty"></div>
+        </section>
+      </main>
     </div>
   </div>
 

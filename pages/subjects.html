@@ -28,7 +28,52 @@
       TASK 6.5: Assign teacher to subject
       TASK 6.6: Assign subject to class
       ================================ -->
-      
+      <main class="content">
+        <h1>Subjects</h1>
+        <div id="page-alert"></div>
+
+        <section class="panel">
+          <h2>Add / Edit Subject</h2>
+          <form id="subjects-form" class="app-form" novalidate>
+            <input type="hidden" id="subject-id" />
+            <div class="grid-3">
+              <div class="form-group">
+                <label for="subject-name">Subject Name</label>
+                <input id="subject-name" type="text" required />
+                <small class="error-text" data-error-for="subject-name"></small>
+              </div>
+              <div class="form-group">
+                <label for="subject-teacher">Teacher</label>
+                <select id="subject-teacher"></select>
+              </div>
+              <div class="form-group">
+                <label for="subject-class">Class</label>
+                <select id="subject-class"></select>
+              </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Save Subject</button>
+            <button class="btn" type="button" id="subjects-reset">Reset</button>
+          </form>
+        </section>
+
+        <section class="panel">
+          <h2>Subject List</h2>
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Teacher</th>
+                  <th>Class</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="subjects-table-body"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
     </div>
   </div>
 
